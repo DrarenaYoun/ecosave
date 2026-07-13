@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wishlist | EcoSave Market</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-required-role="customer">
+
+  <main class="dashboard-page">
+    <div class="container">
+      <div class="dashboard-header">
+        <div>
+          <div class="section-pill">Wishlist</div>
+          <h1>Your saved EcoSave deals.</h1>
+          <p>Keep track of favorite near-expiry products and reserve them when you are ready.</p>
+        </div>
+        <div class="dashboard-count"><strong id="wishlistCount">0</strong><span>saved deals</span></div>
+      </div>
+
+      <div class="dashboard-empty" id="wishlistEmpty">
+        <h2>&#10084;&#65039; Your wishlist is empty.</h2>
+        <p>Browse products and save your favorite near-expiry deals.</p>
+        <a class="btn btn--primary" href="shop.html">Browse Products</a>
+      </div>
+
+      <div class="wishlist-grid" id="wishlistGrid"></div>
+    </div>
+  </main>
+  <script src="js/layout.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/product-data.js"></script>
+  <script src="js/wishlist.js"></script>
+</body>
+</html>

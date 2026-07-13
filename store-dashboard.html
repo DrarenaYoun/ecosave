@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Store Dashboard | EcoSave Market</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-required-role="store">
+  <main class="dashboard-page">
+    <div class="container">
+      <div class="dashboard-header">
+        <div>
+          <div class="section-pill">Store Dashboard</div>
+          <h1 id="storeName">Partner store dashboard.</h1>
+          <p id="storeInfo">Manage near-expiry listings, reservations, inventory, and business performance.</p>
+        </div>
+        <a class="btn btn--primary" href="shop.html">View Marketplace</a>
+      </div>
+
+      <div class="store-dashboard-grid">
+        <article class="store-stat"><span>Total Products</span><strong id="totalProducts">0</strong></article>
+        <article class="store-stat"><span>Total reservations</span><strong id="totalReservations">0</strong></article>
+        <article class="store-stat"><span>Pending reservations</span><strong id="pendingReservations">0</strong></article>
+        <article class="store-stat"><span>Completed reservations</span><strong id="completedReservations">0</strong></article>
+        <article class="store-stat"><span>Cancelled reservations</span><strong id="cancelledReservations">0</strong></article>
+      </div>
+
+      <section class="dashboard-section" id="businessPerformance">
+        <div class="dashboard-section__header">
+          <div>
+            <h2>Business Performance</h2>
+            <p>Live analytics from products, inventory, and reservations.</p>
+          </div>
+        </div>
+
+        <div class="analytics-kpi-grid">
+          <article class="store-stat analytics-kpi"><span>Total Products</span><strong id="analyticsTotalProducts">0</strong></article>
+          <article class="store-stat analytics-kpi"><span>Active Products</span><strong id="analyticsActiveProducts">0</strong></article>
+          <article class="store-stat analytics-kpi"><span>Sold Products</span><strong id="analyticsSoldProducts">0</strong></article>
+          <article class="store-stat analytics-kpi"><span>Pending Reservations</span><strong id="analyticsPendingReservations">0</strong></article>
+          <article class="store-stat analytics-kpi"><span>Completed Orders</span><strong id="analyticsCompletedOrders">0</strong></article>
+          <article class="store-stat analytics-kpi"><span>Cancelled Orders</span><strong id="analyticsCancelledOrders">0</strong></article>
+          <article class="store-stat analytics-kpi"><span>Total Revenue</span><strong id="analyticsTotalRevenue">0</strong></article>
+          <article class="store-stat analytics-kpi"><span>Average Discount</span><strong id="analyticsAverageDiscount">0%</strong></article>
+          <article class="store-stat analytics-kpi"><span>Total Inventory Remaining</span><strong id="analyticsInventoryRemaining">0</strong></article>
+        </div>
+
+        <div class="analytics-layout">
+          <article class="analytics-panel">
+            <div class="analytics-panel__header">
+              <h3>Revenue by Product</h3>
+              <span>Completed orders</span>
+            </div>
+            <canvas id="revenueByProductChart" height="260" aria-label="Revenue by product chart"></canvas>
+          </article>
+
+          <article class="analytics-panel">
+            <div class="analytics-panel__header">
+              <h3>Reservation Status Distribution</h3>
+              <span>All store reservations</span>
+            </div>
+            <canvas id="reservationStatusChart" height="260" aria-label="Reservation status distribution chart"></canvas>
+          </article>
+
+          <article class="analytics-panel">
+            <div class="analytics-panel__header">
+              <h3>Top Selling Products</h3>
+              <span>Units sold</span>
+            </div>
+            <canvas id="topSellingChart" height="260" aria-label="Top selling products chart"></canvas>
+          </article>
+        </div>
+
+        <div class="analytics-summary-grid">
+          <article class="analytics-panel">
+            <div class="analytics-panel__header">
+              <h3>Best Selling Products</h3>
+              <span>Top 5</span>
+            </div>
+            <div class="analytics-list" id="bestSellingProducts"></div>
+          </article>
+
+          <article class="analytics-panel">
+            <div class="analytics-panel__header">
+              <h3>Inventory Overview</h3>
+              <span>Live stock</span>
+            </div>
+            <div class="analytics-mini-stats">
+              <span>Products in Stock<strong id="analyticsProductsInStock">0</strong></span>
+              <span>Low Stock<strong id="analyticsLowStock">0</strong></span>
+              <span>Out of Stock<strong id="analyticsOutOfStock">0</strong></span>
+            </div>
+          </article>
+
+          <article class="analytics-panel">
+            <div class="analytics-panel__header">
+              <h3>Reservation Statistics</h3>
+              <span>Status counts</span>
+            </div>
+            <div class="analytics-mini-stats analytics-mini-stats--wide">
+              <span>Pending<strong id="analyticsStatusPending">0</strong></span>
+              <span>Confirmed<strong id="analyticsStatusConfirmed">0</strong></span>
+              <span>Ready for Pickup<strong id="analyticsStatusReady">0</strong></span>
+              <span>Completed<strong id="analyticsStatusCompleted">0</strong></span>
+              <span>Cancelled<strong id="analyticsStatusCancelled">0</strong></span>
+              <span>Expired<strong id="analyticsStatusExpired">0</strong></span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="dashboard-section">
+        <div class="dashboard-section__header">
+          <div>
+            <h2>Inventory</h2>
+            <p>Live stock levels for products connected to this store.</p>
+          </div>
+        </div>
+        <div class="store-dashboard-grid">
+          <article class="store-stat"><span>Total Products</span><strong id="inventoryTotalProducts">0</strong></article>
+          <article class="store-stat"><span>Total Units in Stock</span><strong id="totalUnitsInStock">0</strong></article>
+          <article class="store-stat"><span>Low Stock</span><strong id="lowStockCount">0</strong></article>
+          <article class="store-stat"><span>Sold Out</span><strong id="soldOutCount">0</strong></article>
+        </div>
+      </section>
+
+      <section class="dashboard-section">
+        <div class="dashboard-section__header">
+          <div>
+            <h2>My Products</h2>
+            <p>Add, edit, or delete near-expiry products created by your store account.</p>
+          </div>
+        </div>
+        <form class="reservation-form product-management-form" id="productForm">
+          <div>
+            <h2 id="productFormTitle">Add Product</h2>
+            <p class="form-note">Store name is connected to your logged-in store account.</p>
+          </div>
+          <input type="hidden" id="editingProductId" />
+          <label>Store Name<input id="storeNameInput" type="text" readonly /></label>
+          <div class="product-form-grid">
+            <label>Product Name<input id="productNameInput" type="text" placeholder="Fresh bakery box" required /></label>
+            <label>
+              Category
+              <select id="productCategoryInput" required>
+                <option value="">Select category</option>
+                <option>Food</option>
+                <option>Bakery</option>
+                <option>Dairy</option>
+                <option>Vegetables</option>
+                <option>Meat</option>
+                <option>Frozen Food</option>
+                <option>Drinks</option>
+                <option>Snacks</option>
+                <option>Beauty</option>
+                <option>Household</option>
+              </select>
+            </label>
+            <label>Original Price<input id="originalPriceInput" type="number" min="0" step="1000" placeholder="50000" /></label>
+            <label>Sale Price<input id="salePriceInput" type="number" min="1" step="1000" placeholder="25000" required /></label>
+            <label>Expiry Date<input id="expiryDateInput" type="date" required /></label>
+            <label>Quantity<input id="quantityInput" type="number" min="1" step="1" placeholder="10" required /></label>
+            <label>Image URL<input id="imageInput" type="url" placeholder="https://..." /></label>
+            <label>Store Location<input id="locationInput" type="text" placeholder="District 1, Ho Chi Minh City" /></label>
+          </div>
+          <label>Description<textarea id="descriptionInput" rows="4" placeholder="Short product description"></textarea></label>
+          <p class="form-error" id="productFormError"></p>
+          <div class="product-form-actions">
+            <button class="btn btn--primary" id="submitProductBtn" type="submit">Add Product</button>
+            <button class="btn btn--muted" id="cancelEditBtn" type="button" hidden>Cancel Edit</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="dashboard-section">
+        <div class="dashboard-section__header">
+          <div>
+            <h2>Listed Products</h2>
+            <p>Near-expiry products currently connected to this store.</p>
+          </div>
+        </div>
+        <div class="dashboard-empty" id="storeProductsEmpty"><h2>No listed products</h2><p>This store does not have active products yet.</p></div>
+        <div class="store-products-grid" id="storeProducts"></div>
+      </section>
+
+      <section class="dashboard-section">
+        <div class="dashboard-section__header">
+          <div>
+            <h2>Reservation Management</h2>
+            <p>Confirm, reject, prepare, and complete incoming customer reservations.</p>
+          </div>
+        </div>
+        <div class="dashboard-empty" id="storeReservationsEmpty"><h2>No reservations yet</h2><p>Customer reservations for this store will appear here.</p></div>
+        <div class="store-reservation-table" id="storeReservations"></div>
+      </section>
+    </div>
+  </main>
+
+  <script src="js/layout.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/product-data.js"></script>
+  <script src="js/reservation-data.js"></script>
+  <script src="js/store-dashboard.js"></script>
+</body>
+</html>

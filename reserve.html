@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reserve | EcoSave Market</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-required-role="customer">
+  <main class="reserve-page">
+    <div class="container">
+      <div class="reserve-page__header">
+        <div class="section-pill">Reserve Deal</div>
+        <h1>Confirm your EcoSave pickup.</h1>
+        <p>Review the selected near-expiry deal and enter your pickup details to save it locally.</p>
+      </div>
+
+      <div class="reserve-missing" id="reserveMissing">
+        <h2>Product Not Found</h2>
+        <p>This reservation link does not match an active EcoSave product.</p>
+        <a class="btn btn--primary" href="shop.html">Back to Shop</a>
+      </div>
+
+      <div class="reserve-layout" id="reserveLayout">
+        <article class="reserve-card">
+          <div class="reserve-card__image" id="reserveImage"></div>
+          <div class="reserve-card__body">
+            <div class="reserve-meta"><span id="reserveCategory">Category</span><span id="reserveQuantity">0 left</span></div>
+            <h2 id="reserveName">Product</h2>
+            <p class="reserve-store"><span id="reserveStore">Store</span><br /><span id="reserveLocation">Location</span></p>
+            <div class="reserve-price">
+              <strong id="reservePrice">₫0</strong>
+              <span id="reserveExpiry">Expires soon</span>
+            </div>
+          </div>
+        </article>
+
+        <form class="reservation-form" id="reservationForm" novalidate>
+          <h2>Reservation Details</h2>
+          <label>Full name<input id="fullName" name="fullName" type="text" autocomplete="name" required /></label>
+          <label>Phone number<input id="phone" name="phone" type="tel" autocomplete="tel" required /></label>
+          <label>Email<input id="email" name="email" type="email" autocomplete="email" required /></label>
+          <label>Quantity<input id="reserveAmount" name="reserveAmount" type="number" min="1" value="1" required /></label>
+          <label>Pickup date<input id="pickupDate" name="pickupDate" type="date" required /></label>
+          <p class="form-error" id="reservationError">Please complete every required field.</p>
+          <button class="btn btn--primary" type="submit">Confirm Reservation</button>
+        </form>
+
+        <div class="reservation-success" id="reservationSuccess">
+          <h2>Reservation Confirmed</h2>
+          <p>Your EcoSave reservation has been saved on this device.</p>
+          <div class="reservation-id" id="reservationId">Reservation ID</div>
+          <a class="btn btn--primary" href="shop.html">Back to Shop</a>
+        </div>
+      </div>
+
+      <section class="dashboard-section">
+        <div class="dashboard-section__header">
+          <div>
+            <h2>My Reservations</h2>
+            <p>Track and cancel pending EcoSave reservations from this device.</p>
+          </div>
+        </div>
+        <div class="dashboard-empty" id="reserveReservationsEmpty"><h2>No reservations yet</h2><p>Your saved pickups will appear here after confirmation.</p></div>
+        <div class="reservation-list" id="reserveReservationsList"></div>
+      </section>
+    </div>
+  </main>
+  <script src="js/layout.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/product-data.js"></script>
+  <script src="js/reservation-data.js"></script>
+  <script src="js/reserve.js"></script>
+</body>
+</html>

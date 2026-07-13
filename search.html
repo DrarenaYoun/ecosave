@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Search | EcoSave Market</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <main class="dashboard-page">
+    <div class="container">
+      <div class="dashboard-header">
+        <div>
+          <div class="section-pill">Search</div>
+          <h1>Find EcoSave deals.</h1>
+          <p>Search the marketplace using the centralized EcoSave product catalog and store-created listings.</p>
+        </div>
+        <a class="btn btn--primary" href="shop.html">Browse Products</a>
+      </div>
+
+      <form class="reservation-form search-form" id="searchForm">
+        <div class="product-form-grid">
+          <label>
+            Product or store
+            <input id="searchQuery" type="search" placeholder="Bakery, milk, Green Market" />
+          </label>
+          <label>
+            Location
+            <input id="searchLocation" type="text" placeholder="District 1" />
+          </label>
+        </div>
+        <button class="btn btn--primary" type="submit">Search Deals</button>
+      </form>
+
+      <section class="dashboard-section">
+        <div class="dashboard-section__header">
+          <div>
+            <h2>Search Results</h2>
+            <p><span id="searchCount">0</span> matching products found.</p>
+          </div>
+        </div>
+        <div class="dashboard-empty" id="searchEmpty"><h2>No deals found</h2><p>Try another search term or browse all products.</p><a class="btn btn--primary" href="shop.html">Browse Products</a></div>
+        <div class="wishlist-grid" id="searchResults"></div>
+      </section>
+    </div>
+  </main>
+  <script src="js/layout.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/product-data.js"></script>
+  <script src="js/search.js"></script>
+</body>
+</html>

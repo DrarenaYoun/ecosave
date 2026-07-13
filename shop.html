@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop Deals | EcoSave Market</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{--green:#34A853;--green-dark:#268641;--accent:#FFB703;--bg:#F8FAF8;--text:#142018;--muted:#66736A;--line:#E2EAE3;--white:#fff;--red:#E5484D;--shadow:0 24px 70px rgba(20,32,24,.11)}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text)}
+    a{text-decoration:none;color:inherit}button,input,select{font:inherit}button{cursor:pointer}
+    .container{width:min(1180px,calc(100% - 32px));margin:0 auto}
+    .top-bar{background:var(--text);color:white;font-size:13px;font-weight:700}
+    .top-bar__inner{min-height:42px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .top-bar a{color:var(--accent);font-weight:900}
+    .site-header{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.92);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:28px}
+    .logo{display:inline-flex;align-items:center;gap:10px;font-size:20px;font-weight:800;white-space:nowrap}
+    .logo__mark{width:36px;height:36px;display:grid;place-items:center;border-radius:12px;background:linear-gradient(135deg,var(--green),#62C978);color:white;box-shadow:0 10px 22px rgba(52,168,83,.22)}
+    .logo__mark svg{width:20px;height:20px}
+    .nav__menu,.nav__actions{display:flex;align-items:center;gap:8px}.nav__menu{list-style:none}
+    .nav__menu a,.nav__signin{height:40px;padding:0 13px;display:inline-flex;align-items:center;border-radius:999px;color:var(--muted);font-size:14px;font-weight:700;transition:.22s ease}
+    .nav__menu a:hover,.nav__menu a.is-active,.nav__signin:hover{color:var(--text);background:#F0F6F1;transform:translateY(-1px)}
+    .btn{height:52px;padding:0 22px;border:0;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;transition:.22s ease}
+    .btn--primary{background:var(--green);color:white;box-shadow:0 16px 32px rgba(52,168,83,.28)}.btn--small{height:42px;padding:0 18px;font-size:14px}
+    .icon-btn,.menu-toggle{width:40px;height:40px;border:1px solid transparent;border-radius:999px;background:transparent;color:var(--text);display:grid;place-items:center}
+    .icon-btn svg,.menu-toggle svg{width:20px;height:20px}.menu-toggle,.mobile-menu{display:none}
+    .shop-hero{padding:70px 0 36px;background:radial-gradient(circle at 80% 12%,rgba(255,183,3,.15),transparent 28%),radial-gradient(circle at 16% 72%,rgba(52,168,83,.13),transparent 30%),var(--bg)}
+    .shop-hero__grid{display:grid;grid-template-columns:1fr auto;gap:28px;align-items:end}
+    .section-pill{width:fit-content;margin-bottom:12px;padding:7px 12px;border:1px solid var(--line);border-radius:999px;background:white;color:var(--green-dark);font-size:13px;font-weight:800}
+    .shop-hero h1{max-width:780px;font-size:clamp(42px,6vw,72px);line-height:.98;font-weight:900}
+    .shop-hero p{max-width:620px;margin-top:20px;color:var(--muted);font-size:18px;line-height:1.65;font-weight:500}
+    .shop-summary{min-width:260px;padding:18px;border:1px solid var(--line);border-radius:26px;background:rgba(255,255,255,.9);box-shadow:0 12px 28px rgba(20,32,24,.05)}
+    .shop-summary strong{display:block;color:var(--green-dark);font-size:34px;line-height:1;font-weight:900}.shop-summary span{display:block;margin-top:7px;color:var(--muted);font-size:13px;font-weight:800}
+    .marketplace{padding:32px 0 88px}
+    .controls{position:sticky;top:118px;z-index:20;margin-bottom:24px;padding:12px;border:1px solid var(--line);border-radius:28px;background:rgba(255,255,255,.92);backdrop-filter:blur(18px);box-shadow:0 12px 30px rgba(20,32,24,.06);display:grid;grid-template-columns:1.2fr auto auto;gap:12px;align-items:center}
+    .search-box{height:52px;display:flex;align-items:center;gap:10px;padding:0 16px;border-radius:18px;background:#F8FAF8}.search-box input{width:100%;border:0;outline:0;background:transparent;font-weight:650}.search-box svg{width:19px;color:var(--green)}
+    .filters{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}.filters::-webkit-scrollbar{display:none}
+    .filter-btn{height:42px;padding:0 15px;border:0;border-radius:999px;background:#F0F6F1;color:var(--muted);font-size:14px;font-weight:800;white-space:nowrap}.filter-btn.is-active{background:var(--green);color:white}
+    .sort-select{height:42px;min-width:190px;padding:0 14px;border:1px solid var(--line);border-radius:999px;background:white;font-weight:800}
+    .results-bar{margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;gap:16px;color:var(--muted);font-size:14px;font-weight:750}.results-bar strong{color:var(--text);font-weight:900}
+    .products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .product-card{overflow:hidden;border:1px solid var(--line);border-radius:28px;background:white;box-shadow:0 12px 28px rgba(20,32,24,.05);transition:.26s ease}.product-card:hover{transform:translateY(-8px);border-color:rgba(52,168,83,.28);box-shadow:var(--shadow)}
+    .product-media{position:relative;height:190px;background:radial-gradient(circle at 72% 24%,rgba(255,255,255,.75),transparent 24%),linear-gradient(135deg,var(--a),var(--b))}
+    .discount{position:absolute;top:16px;left:16px;height:34px;padding:0 12px;border-radius:999px;display:inline-flex;align-items:center;background:var(--accent);font-size:13px;font-weight:900}
+    .wish{position:absolute;top:14px;right:14px;width:38px;height:38px;border:1px solid rgba(255,255,255,.65);border-radius:999px;background:rgba(255,255,255,.86);font-size:20px}.wish.is-active{background:var(--green);color:white}
+    .product-body{padding:18px}.meta{display:flex;justify-content:space-between;margin-bottom:10px;color:var(--muted);font-size:12px;font-weight:800}
+    .product-body h3{min-height:48px;margin-bottom:8px;font-size:20px;line-height:1.18;font-weight:900}.store{margin-bottom:16px;color:var(--muted);font-size:14px;font-weight:650}
+    .price-row{margin-bottom:16px;display:flex;align-items:end;justify-content:space-between;gap:12px}.price-row strong{color:var(--green-dark);font-size:25px;font-weight:900}.price-row span{margin-left:5px;color:#98A19A;font-size:14px;font-weight:800;text-decoration:line-through}.expiry{color:var(--red);font-size:12px;font-style:normal;font-weight:900;white-space:nowrap}
+    .reserve{width:100%;height:46px;border:0;border-radius:16px;background:var(--text);color:white;font-size:14px;font-weight:900}.reserve:hover,.reserve.is-reserved{background:var(--green)}
+    .empty{display:none;padding:42px;border:1px solid var(--line);border-radius:28px;background:white;text-align:center}.empty.is-visible{display:block}
+    .pagination{margin-top:30px;display:flex;justify-content:center;gap:8px;flex-wrap:wrap}.page-btn{min-width:42px;height:42px;padding:0 14px;border:1px solid var(--line);border-radius:999px;background:white;font-weight:900}.page-btn.is-active{background:var(--green);color:white;border-color:var(--green)}
+    @media(max-width:1120px){.products-grid{grid-template-columns:repeat(3,1fr)}.controls{grid-template-columns:1fr}.sort-select{width:100%}}
+    @media(max-width:1080px){.nav__menu,.nav__actions{display:none}.menu-toggle{display:grid}.mobile-menu{position:fixed;top:118px;left:16px;right:16px;padding:12px;border:1px solid var(--line);border-radius:24px;background:white;box-shadow:var(--shadow);opacity:0;pointer-events:none}.mobile-menu.is-open{display:grid;opacity:1;pointer-events:auto}.mobile-menu a{height:46px;padding:0 14px;border-radius:14px;display:flex;align-items:center;font-weight:800}}
+    @media(max-width:860px){.shop-hero__grid{grid-template-columns:1fr}.products-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:680px){.top-bar__inner,.results-bar{align-items:start;flex-direction:column}.controls{position:static}.products-grid{grid-template-columns:1fr}.product-media{height:210px}}
+  </style>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <main>
+    <section class="shop-hero">
+      <div class="container shop-hero__grid">
+        <div><div class="section-pill">Browse Deals</div><h1>Marketplace savings, updated daily.</h1><p>Search safe near-expiry products from local supermarkets, bakeries, pharmacies, and everyday retailers.</p></div>
+        <div class="shop-summary"><strong id="summaryCount">89</strong><span>available discounted products</span></div>
+      </div>
+    </section>
+
+    <section class="marketplace">
+      <div class="container">
+        <div class="controls">
+          <label class="search-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5L21 21"/></svg><input id="search" type="search" placeholder="Search products..." /></label>
+          <div class="filters">
+            <button class="filter-btn is-active" data-category="All">All</button><button class="filter-btn" data-category="Vegetables">Vegetables</button><button class="filter-btn" data-category="Meat">Meat</button><button class="filter-btn" data-category="Frozen Food">Frozen Food</button><button class="filter-btn" data-category="Bakery">Bakery</button><button class="filter-btn" data-category="Dairy">Dairy</button><button class="filter-btn" data-category="Drinks">Drinks</button><button class="filter-btn" data-category="Snacks">Snacks</button><button class="filter-btn" data-category="Household">Household</button>
+          </div>
+          <select class="sort-select" id="sort">
+            <option value="discount">Highest Discount</option><option value="price">Lowest Price</option><option value="distance">Nearest Store</option><option value="expiry">Expiry Date</option>
+          </select>
+        </div>
+
+        <div class="results-bar"><p><strong id="count">89</strong> deals found</p><p id="pageStatus">Page 1 of 12</p></div>
+        <div class="products-grid" id="grid"></div>
+        <div class="empty" id="empty"><h2>No deals found</h2><p>Try another search term or choose a different category.</p></div>
+        <div class="pagination" id="pagination"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/layout.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/product-data.js"></script>
+  <script src="js/shop.js"></script>
+</body>
+</html>

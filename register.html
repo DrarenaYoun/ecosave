@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register | EcoSave Market</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <main class="auth-page">
+    <div class="container auth-layout">
+      <section class="auth-copy">
+        <div class="section-pill">Create Account</div>
+        <h1>Join EcoSave as a shopper or partner.</h1>
+        <p>Customers can reserve local deals. Stores can manage near-expiry products and incoming reservations.</p>
+      </section>
+      <form class="reservation-form auth-form" id="registerForm" novalidate>
+        <h2>Register</h2>
+        <label>Full name<input id="fullName" name="fullName" type="text" autocomplete="name" required /></label>
+        <label>Email<input id="email" name="email" type="email" autocomplete="email" required /></label>
+        <label>Password<input id="password" name="password" type="password" autocomplete="new-password" required /></label>
+        <label>Role<select id="role" name="role" required><option value="customer">Customer</option><option value="store">Store</option></select></label>
+        <div class="store-fields" id="storeFields">
+          <label>Store name<input id="storeName" name="storeName" type="text" autocomplete="organization" /></label>
+          <label>Location<input id="location" name="location" type="text" autocomplete="street-address" /></label>
+        </div>
+        <p class="form-error" id="authError">Please complete every required field.</p>
+        <button class="btn btn--primary" type="submit">Create Account</button>
+        <p class="auth-switch">Already have an account? <a href="login.html">Login</a></p>
+      </form>
+    </div>
+  </main>
+  <script src="js/layout.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
